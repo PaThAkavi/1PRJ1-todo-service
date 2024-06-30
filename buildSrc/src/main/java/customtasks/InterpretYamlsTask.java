@@ -6,8 +6,8 @@ import org.gradle.api.tasks.OutputDirectory;
 import org.gradle.api.tasks.SkipWhenEmpty;
 import org.gradle.api.tasks.TaskAction;
 import org.gradle.internal.impldep.org.apache.commons.lang.StringUtils;
-//import org.openapitools.codegen.DefaultGenerator;
-//import org.openapitools.codegen.config.CodegenConfigurator;
+import org.openapitools.codegen.DefaultGenerator;
+import org.openapitools.codegen.config.CodegenConfigurator;
 import util.TaskUtils;
 
 import jakarta.inject.Inject;
@@ -56,18 +56,18 @@ public class InterpretYamlsTask extends DefaultTask {
     }
 
     private void generatedModelClasses(String swaggerSourceFile, String extendedProjectPackage) {
-//        CodegenConfigurator config = new CodegenConfigurator();
-//        config.setInputSpec(t.getFullPath(swaggerSourceFile).toString());
-//        config.setOutputDir(t.getProjDir());
-//        config.setGeneratorName("spring");
-//        config.addAdditionalProperty("modelPackage", extendedProjectPackage);
-//        config.addAdditionalProperty("sourceFolder", GENERATED_SRC_JAVA_FOLDER);
-//        config.addAdditionalProperty("serializableModel", true);
-//        config.addAdditionalProperty("openApiNullable", false);
-//        config.addAdditionalProperty("booleanGetterPrefix", "is");
-//        config.addAdditionalProperty("dateLibrary", "java17");
-//
-//        new DefaultGenerator().opts(config.toClientOptInput()).generate();
+        CodegenConfigurator config = new CodegenConfigurator();
+        config.setInputSpec(t.getFullPath(swaggerSourceFile).toString());
+        config.setOutputDir(t.getProjDir());
+        config.setGeneratorName("spring");
+        config.addAdditionalProperty("modelPackage", extendedProjectPackage);
+        config.addAdditionalProperty("sourceFolder", GENERATED_SRC_JAVA_FOLDER);
+        config.addAdditionalProperty("serializableModel", true);
+        config.addAdditionalProperty("openApiNullable", false);
+        config.addAdditionalProperty("booleanGetterPrefix", "is");
+        config.addAdditionalProperty("dateLibrary", "java17");
+
+        new DefaultGenerator().opts(config.toClientOptInput()).generate();
     }
 
     private void cleanupUnusedOpenApiFiles() {

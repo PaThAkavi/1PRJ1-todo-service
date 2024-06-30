@@ -69,7 +69,6 @@ subprojects {
                 exclude module: "snakeyaml"
                 exclude group: "org.yaml"
             }
-            implementation libraries.openapi
             testImplementation libraries.junit_api
             testImplementation libraries.junit_engine
             testImplementation libraries.junit_platform
