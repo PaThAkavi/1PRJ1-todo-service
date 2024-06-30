@@ -1,19 +1,35 @@
 plugins {
-    id 'java'
+    id "com.github.node-gradle.node" version "3.5.1"
 }
 
-group = 'com.projects.todo'
-version = '1.0.0.0'
+apply plugin: "base"
+apply plugin: "com.github.node-gradle.node"
 
-repositories {
-    mavenCentral()
+description = "Todo Service Web - React App Layer"
+
+configurations {
+    implementation.exclude(group: 'org.openapitools')
 }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+npmInstall {
+    args = ["--no-audit", "--perfer-offline", "--verbose"]
 }
 
-test {
-    useJUnitPlatform()
+task buildReactApp(type: NpmTask, dependsOn: npmInstall) {
+    args = ["run", "build"]
+}
+
+task buildReactAppInstant(type: NpmTask) {
+    args = ["run", "build"]
+}
+
+assemble.dependsOn(buildReactApp)
+
+configurations.archives.with {
+    println " >>>>>> Configuration : Skipping Archives for conditional Subprojects ::: " + project.name + " Version : " + version
+    artifacts.remove artifacts.find {
+        println " >>>>>> Configuration : Archive Name ::: " + it.file.toString()
+        it.file.toString().contains("todo-service-web-${version}.jar")
+        it.file.toString().contains("todo-service-web-${version}.pom")
+    }
 }

@@ -5,47 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ccd87bd-5984-4f18-909f-fa9e03de1e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/src/main/java/customtasks/InterpretWsdlTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/src/main/java/customtasks/InterpretYamlsTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/src/main/java/util/FileConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/src/main/java/util/TaskUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildSrc/src/main/resources/JavaSpring/pojo.mustache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/dependencies.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/repositories.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-api/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-api/src/main/resources/apis/yamls/api.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-api/src/main/resources/openapi.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-api/src/test/java/org/openapitools/OpenApiGeneratorApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-app/src/main/java/com/projects/todo/ApplicationMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-app/src/main/resources/application-local.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-flow/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-flow/src/main/resources/flow.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-flow/src/test/java/FlowTestApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-model/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-model/src/main/resources/model.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-model/src/test/resources/junit-platform.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-persistence/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-rest/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-schema/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-web/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo-service-web/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo-service-web/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/java/customtasks/InterpretYamlsTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/java/customtasks/InterpretYamlsTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/java/util/TaskUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/java/util/TaskUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/dependencies.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/dependencies.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/repositories.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/repositories.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-service-web/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/todo-service-web/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,17 +38,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="toto-service-parent" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="toto-service-parent" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="toto-service-parent" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -110,27 +68,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.toto-service [:Main.main()].executor": "Run",
-    "Gradle.toto-service [buildDependents].executor": "Run",
-    "Gradle.toto-service [build].executor": "Run",
-    "Gradle.toto-service [clean].executor": "Run",
-    "Gradle.toto-service.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "/Users/avaneeshpathak/IdeaProjects/toto-service/todo-service-web/src/main/java/com/projects/todo/Main.java",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.toto-service [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.toto-service [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.toto-service [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.toto-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.toto-service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/avaneeshpathak/IdeaProjects/toto-service/todo-service-web/src/main/java/com/projects/todo/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle --refresh-dependencies" />
@@ -242,6 +200,15 @@
       <option name="presentableId" value="Default" />
       <updated>1719425390147</updated>
     </task>
+    <task id="LOCAL-00001" summary="inital commit">
+      <option name="closed" value="true" />
+      <created>1719741652863</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719741652863</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -260,6 +227,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="inital commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="inital commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

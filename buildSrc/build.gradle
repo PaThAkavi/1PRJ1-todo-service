@@ -7,4 +7,6 @@ description = "Todo Service Build Source"
 
 dependencies {
     implementation libraries.jakarta_inject
+    implementation libraries.commons_io
+    implementation libraries.commonslang3
 }

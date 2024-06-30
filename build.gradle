@@ -4,8 +4,8 @@ plugins {
     id 'java'
     id 'idea'
     id 'jacoco'
-//    id 'org.sonarqube' version '4.0.0.2929'
-//    id 'org.openapi.generator' version '6.2.1'
+    id 'org.sonarqube' version '4.0.0.2929'
+    id 'org.openapi.generator' version '6.2.1'
     id 'org.springframework.boot' version '3.3.1' apply false
     id 'io.spring.dependency-management' version '1.1.4' apply false
 }
@@ -69,6 +69,7 @@ subprojects {
                 exclude module: "snakeyaml"
                 exclude group: "org.yaml"
             }
+            implementation libraries.openapi
             testImplementation libraries.junit_api
             testImplementation libraries.junit_engine
             testImplementation libraries.junit_platform
@@ -78,14 +79,14 @@ subprojects {
 
     if(project.name != "todo-service-api" && project.name != "todo-service-schema" && project.name != "todo-service-web") {
         dependencies {
-//            compileOnly libraries.lombok
-//            annotationProcessor libraries.lombok
-//
-//            testCompileOnly libraries.lombok
-//            testAnnotationProcessor libraries.lombok
+            compileOnly libraries.lombok
+            annotationProcessor libraries.lombok
 
-//            testImplementation libraries.spring_boot_test
-//            implementation 'co.elastic.apm:apm-agent-attach:1.48.0'
+            testCompileOnly libraries.lombok
+            testAnnotationProcessor libraries.lombok
+
+            testImplementation libraries.spring_boot_test
+            implementation 'co.elastic.apm:apm-agent-attach:1.48.0'
         }
 
         test {
