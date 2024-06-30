@@ -32,7 +32,7 @@ public class InterpretYamlsTask extends DefaultTask {
     private static String YAML_INPUT_FOLDER = RESOURCES_FOLDER + ("apis/yamls/").replace("/", FS);
 
     @Inject
-    public InterpretYamlsTask(TaskUtils t) {
+    public InterpretYamlsTask() {
         this.t = new TaskUtils(this);
     }
 

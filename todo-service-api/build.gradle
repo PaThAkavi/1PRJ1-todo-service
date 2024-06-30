@@ -4,13 +4,13 @@ apply plugin: "maven-publish"
 description = "Todo Service API"
 
 dependencies {
-//    implementation libraries.jackson
-//    testImplementation libraries.spring_boot_test
+    implementation libraries.jackson
+    testImplementation libraries.spring_boot_test
 }
 
-//tasks.register("generateProjectModels", InterpretYamlsTask)
+tasks.register("generateProjectModels", InterpretYamlsTask)
 
-//compileJava.dependsOn generateProjectModels
+compileJava.dependsOn generateProjectModels
 
 sourceSets {
     main {
@@ -48,7 +48,7 @@ configurations.archives.with {
     println " >>>>>> Configuration : Skipping Archives for conditional Subprojects ::: " + project.name + " Version : " + version
     artifacts.remove artifacts.find {
         println " >>>>>> Configuration : Archive Name ::: " + it.file.toString()
-        it.file.toString().contains("todo-service-api${version}.jar")
+        it.file.toString().contains("todo-service-api-${version}.jar")
         it.file.toString().contains("todo-service-api-${version}.pom")
     }
 }

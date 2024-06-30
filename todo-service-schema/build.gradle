@@ -15,45 +15,45 @@ import customtasks.InterpretYamlsTask
 
 // YAMLs TO JAVA
 
-//tasks.register("generateYamlModels", InterpretYamlsTask)
-//compileJava.dependsOn generateYamlModels
+tasks.register("generateYamlModels", InterpretYamlsTask)
+compileJava.dependsOn generateYamlModels
 
 // WSDLs TO JAVA
 
-//def zippedWsdls = "src/main/resources/apis/wsdls"
-//def tempWsdlFolder = "src/main/resources/unzippedwsdls"
-//def zipsToWsdlsList = []
-//
-//if (!zipsToWsdlsList.isEmpty()) {
-//    task deleteTempWsdlFolder(type: Delete) {
-//        delete tempWsdlFolder
-//    }
-//    compileJava.dependsOn(deleteTempWsdlFolder)
-//
-//    zipsToWsdlsList.each { item ->
-//        def zipFile = item[0]
-//        def wsdlPath = item[1]
-//        def wsdlName = wsdlPath.substring(wsdlPath.lastIndexOf("/") + 1)
-//        def extensionlessWsdlName = wsdlName.replace(".wsdl", "")
-//
-//        def unzip = tasks.register("unzip${extensionlessWsdlName}", Copy)
-//        def generate = tasks.register("generate${extensionlessWsdlName}Models", InterpretWsdlTask, zipFile, wsdlPath)
-//
-//        unzip.configure {
-//            fomr zipTree("${zippedWsdls}/${zipFile}")
-//            into tempWsdlFolder
-//        }
-//        processResources.mustRunAfter(unzip)
-//        processResources.mustRunAfter(generate)
-//
-//        generate.get().dependsOn(unzip)
-//        deleteTempWsdlFolder.dependsOn(generate)
-//    }
-//}
+def zippedWsdls = "src/main/resources/apis/wsdls"
+def tempWsdlFolder = "src/main/resources/unzippedwsdls"
+def zipsToWsdlsList = []
 
-//clean {
-//    delete tempWsdlFolder
-//}
+if (!zipsToWsdlsList.isEmpty()) {
+    task deleteTempWsdlFolder(type: Delete) {
+        delete tempWsdlFolder
+    }
+    compileJava.dependsOn(deleteTempWsdlFolder)
+
+    zipsToWsdlsList.each { item ->
+        def zipFile = item[0]
+        def wsdlPath = item[1]
+        def wsdlName = wsdlPath.substring(wsdlPath.lastIndexOf("/") + 1)
+        def extensionlessWsdlName = wsdlName.replace(".wsdl", "")
+
+        def unzip = tasks.register("unzip${extensionlessWsdlName}", Copy)
+        def generate = tasks.register("generate${extensionlessWsdlName}Models", InterpretWsdlTask, zipFile, wsdlPath)
+
+        unzip.configure {
+            fomr zipTree("${zippedWsdls}/${zipFile}")
+            into tempWsdlFolder
+        }
+        processResources.mustRunAfter(unzip)
+        processResources.mustRunAfter(generate)
+
+        generate.get().dependsOn(unzip)
+        deleteTempWsdlFolder.dependsOn(generate)
+    }
+}
+
+clean {
+    delete tempWsdlFolder
+}
 
 sourceSets {
     main {

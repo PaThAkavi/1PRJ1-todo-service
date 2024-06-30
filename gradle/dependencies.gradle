@@ -15,6 +15,7 @@ private static Map<Object, Object> declareVersions() {
     versions.junitPlatform = "1.10.2"
     versions.lombok = "1.18.32"
     versions.commons_io = "2.14.0"
+    versions.jackson = "2.17.0"
     versions
 }
 
@@ -36,5 +37,13 @@ private static Map<Object, Object> declareLibraries() {
     libraries.junit_platform = "org.junit.platform:junit-platform-launcher:$versions.junitPlatform"
     libraries.lombok = "org.projectlombok:lombok:$versions.lombok"
     libraries.commons_io = "commons-io:commons-io:$versions.commons_io"
+    libraries.jackson = [
+            "com.fasterxml.jackson.core:jackson-annotations:$versions.jackson",
+            "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$versions.jackson",
+            "com.fasterxml.jackson.dataformat:jackson-dataformat-properties:$versions.jackson",
+            "com.fasterxml.jackson.core:jackson-core:$versions.jackson",
+            "com.fasterxml.jackson.core:jackson-databind:$versions.jackson",
+            "com.fasterxml.jackson.datatype:jackson-datatype-joda:$versions.jackson",
+    ]
     libraries
 }
