@@ -1,0 +1,4 @@
+dist
+**/*ServiceModels.ts
+/src/models/*.ts
+src/models/*.ts

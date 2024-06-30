@@ -1,9 +1,12 @@
 package org.openapitools;
 
-//@SpringBootTest
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
 public class OpenApiGeneratorApplicationTests {
 
-//    @Test
+    @Test
     void contextLoads() {
     }
 
