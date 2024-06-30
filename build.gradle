@@ -62,6 +62,7 @@ subprojects {
             implementation libraries.spring_boot_web
             implementation libraries.jakarta_inject
             implementation libraries.commonslang3
+            implementation libraries.swagger_annotations
             compileOnly(libraries.openapi) {
                 exclude group: "com.github.jknack"
                 exclude module: "rhino"

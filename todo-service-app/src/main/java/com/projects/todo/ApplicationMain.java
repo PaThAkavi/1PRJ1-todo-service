@@ -1,17 +1,38 @@
 package com.projects.todo;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class ApplicationMain {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import com.google.common.collect.ImmutableSet;
+import io.micrometer.common.util.StringUtils;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+@SpringBootApplication(scanBasePackages = {"com.projects.todo"})
+@OpenAPIDefinition(info = @Info(title = "Todo Service", version = "1.0", description = "These are the microservices for todo service features"))
+public class ApplicationMain {
+
+    private static final String SPRING_PROFILES_ACTIVE = "spring.profiles.active";
+    private static final ImmutableSet<String> VALID_ENVIRONMENTS = ImmutableSet.of("local", "cloud");
+    private static final Logger log = LoggerFactory.getLogger(ApplicationMain.class);
+
+    public static void main(String[] args) {
+        if (new ApplicationMain().validateProfile()) {
+            new SpringApplication(ApplicationMain.class).run(args);
         }
+    }
+
+    private boolean validateProfile() {
+        String activeProfile = System.getProperty(SPRING_PROFILES_ACTIVE);
+        if (StringUtils.isEmpty(activeProfile)) {
+            log.error("Spring activeProfile not specified!, set JVM parameter -Dspring.profiles.active");
+            return false;
+        }
+        if (!VALID_ENVIRONMENTS.contains(activeProfile)) {
+            log.error("{}; Invalid 'spring.profiles.active' specified!, valid environments are :{}", activeProfile, VALID_ENVIRONMENTS);
+            return false;
+        }
+        return true;
     }
 }

@@ -29,7 +29,7 @@ import static util.FileConstants.*;
 public class InterpretYamlsTask extends DefaultTask {
     private final TaskUtils t;
     private static final String DOTTED_PROJECT_PACKAGE = "models.yamls";
-    private static String YAML_INPUT_FOLDER = RESOURCES_FOLDER + ("apis/yamls/").replace("/", FS);
+    private static final String YAML_INPUT_FOLDER = RESOURCES_FOLDER + ("apis/yamls/").replace("/", FS);
 
     @Inject
     public InterpretYamlsTask() {
@@ -110,7 +110,7 @@ public class InterpretYamlsTask extends DefaultTask {
     private void editFileContent(File modelFile, String extendedProjectPackage) {
         try {
             Path path = modelFile.toPath();
-            String content = new String(Files.readAllBytes(path), charset);
+            String content = Files.readString(path, charset);
 
             content = addCamelCaseFormating(content);
             content = editAccessors(content);
@@ -123,7 +123,7 @@ public class InterpretYamlsTask extends DefaultTask {
             content = content.replace(extendedProjectPackage + ".StatusMessage", frameworkModelPackage + ".StatusMessage");
             content = content.replace(extendedProjectPackage + ".SystemError", frameworkModelPackage + ".SystemError");
 
-            Files.write(path, content.getBytes(charset));
+            Files.writeString(path, content, charset);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,7 +149,7 @@ public class InterpretYamlsTask extends DefaultTask {
         ArrayList<String> fields = getFields(content);
 
         for (String field: fields) {
-            String capitalizedFields = StringUtils.capitalise(field);
+            String capitalizedFields = StringUtils.capitalize(field);
             content = content.replace("is" + field, "is" + capitalizedFields);
             content = content.replace("et" + field, "et" + capitalizedFields);
         }

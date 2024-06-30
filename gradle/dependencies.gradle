@@ -16,6 +16,8 @@ private static Map<Object, Object> declareVersions() {
     versions.lombok = "1.18.32"
     versions.commons_io = "2.14.0"
     versions.jackson = "2.17.0"
+    versions.google_guava = "33.1.0-jre"
+    versions.swagger_annotations = "2.2.20"
     versions
 }
 
@@ -24,7 +26,20 @@ private static Map<Object, Object> declareLibraries() {
     def libraries = [:]
     libraries.spring_boot_web = "org.springframework.boot:spring-boot-starter-web:$versions.spring_boot"
     libraries.spring_fw = [
-            "org.springframework:spring-core:$versions.spring_fw"
+            "org.springframework:spring-core:$versions.spring_fw",
+            "org.springframework:spring-beans:$versions.spring_fw",
+            "org.springframework:spring-expression:$versions.spring_fw",
+            "org.springframework:spring-aop:$versions.spring_fw",
+            "org.springframework:spring-tx:$versions.spring_fw",
+            "org.springframework:spring-messaging:$versions.spring_fw",
+            "org.springframework:spring-context:$versions.spring_fw",
+            "org.springframework:spring-web:$versions.spring_fw",
+            "org.springframework:spring-webmvc:$versions.spring_fw",
+            "org.springframework:spring-oxm:$versions.spring_fw",
+            "org.springframework:spring-context-support:$versions.spring_fw",
+            "org.springframework:spring-jdbc:$versions.spring_fw",
+            "org.springframework:spring-jcl:$versions.spring_fw",
+            "org.springframework:spring-webflux:$versions.spring_fw"
     ]
     libraries.spring_boot_test = "org.springframework.boot:spring-boot-starter-test:$versions.spring_boot"
     libraries.lombok = "org.projectlombok:lombok:$versions.lombok"
@@ -45,5 +60,7 @@ private static Map<Object, Object> declareLibraries() {
             "com.fasterxml.jackson.core:jackson-databind:$versions.jackson",
             "com.fasterxml.jackson.datatype:jackson-datatype-joda:$versions.jackson",
     ]
+    libraries.google_guava = "com.google.guava:guava:$versions.google_guava"
+    libraries.swagger_annotations = "io.swagger.core.v3:swagger-annotations:$versions.swagger_annotations"
     libraries
 }

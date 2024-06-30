@@ -54,6 +54,7 @@ dependencies {
     implementation project(":todo-service-web")
     implementation libraries.spring_boot_web
     implementation libraries.spring_fw
+    implementation libraries.google_guava
 }
 
 configurations {
