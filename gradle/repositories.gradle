@@ -1,0 +1,35 @@
+gradle.ext.repositories = {
+    mavenLocal()
+    maven {
+        url "${artifactory_contextUrl}/ivy-dev"
+        allowInsecureProtocol = true
+        credentials {
+            username = getProperty("artifactory_user")
+            password = getProperty("artifactory_password")
+        }
+    }
+    maven {
+        url "${artifactory_contextUrl}/libs-release"
+        allowInsecureProtocol = true
+        credentials {
+            username = getProperty("artifactory_user")
+            password = getProperty("artifactory_password")
+        }
+        metadataSources {
+            mavenPom()
+            artifact()
+        }
+    }
+    maven {
+        url "${artifactory_contextUrl}/libs-snapshot"
+        allowInsecureProtocol = true
+        credentials {
+            username = getProperty("artifactory_user")
+            password = getProperty("artifactory_password")
+        }
+        metadataSources {
+            mavenPom()
+            artifact()
+        }
+    }
+}

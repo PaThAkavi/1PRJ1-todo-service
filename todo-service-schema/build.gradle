@@ -1,0 +1,100 @@
+description = "Todo Service - Schema"
+
+apply plugin: "maven-publish"
+
+configurations {
+    wsdl2java
+}
+
+dependencies {
+
+}
+
+import customtasks.InterpretWsdlTask
+import customtasks.InterpretYamlsTask
+
+// YAMLs TO JAVA
+
+//tasks.register("generateYamlModels", InterpretYamlsTask)
+//compileJava.dependsOn generateYamlModels
+
+// WSDLs TO JAVA
+
+//def zippedWsdls = "src/main/resources/apis/wsdls"
+//def tempWsdlFolder = "src/main/resources/unzippedwsdls"
+//def zipsToWsdlsList = []
+//
+//if (!zipsToWsdlsList.isEmpty()) {
+//    task deleteTempWsdlFolder(type: Delete) {
+//        delete tempWsdlFolder
+//    }
+//    compileJava.dependsOn(deleteTempWsdlFolder)
+//
+//    zipsToWsdlsList.each { item ->
+//        def zipFile = item[0]
+//        def wsdlPath = item[1]
+//        def wsdlName = wsdlPath.substring(wsdlPath.lastIndexOf("/") + 1)
+//        def extensionlessWsdlName = wsdlName.replace(".wsdl", "")
+//
+//        def unzip = tasks.register("unzip${extensionlessWsdlName}", Copy)
+//        def generate = tasks.register("generate${extensionlessWsdlName}Models", InterpretWsdlTask, zipFile, wsdlPath)
+//
+//        unzip.configure {
+//            fomr zipTree("${zippedWsdls}/${zipFile}")
+//            into tempWsdlFolder
+//        }
+//        processResources.mustRunAfter(unzip)
+//        processResources.mustRunAfter(generate)
+//
+//        generate.get().dependsOn(unzip)
+//        deleteTempWsdlFolder.dependsOn(generate)
+//    }
+//}
+
+//clean {
+//    delete tempWsdlFolder
+//}
+
+sourceSets {
+    main {
+        java {
+            srcDir "build/generated-src/main/java"
+        }
+        resources {
+            srcDir "build/generated-src/main/resources"
+        }
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
+
+publishing {
+    publications {
+        mavenJarFlow(MavenPublication) {
+            from components.java
+            pom {
+                name = "todo-service-schema"
+                description = "Todo Service - Schema"
+            }
+        }
+    }
+}
+
+pluginManager.withPlugin("com.jfrog.artifactory") {
+    artifactoryPublish {
+        skip = true
+        publications("mavenJarSchema")
+    }
+}
+
+configurations.archives.with {
+    println " >>>>>> Configuration : Skipping Archives for conditional Subprojects ::: " + project.name + " Version : " + version
+    artifacts.remove artifacts.find {
+        println " >>>>>> Configuration : Archive Name ::: " + it.file.toString()
+        it.file.toString().contains("todo-service-schema-${version}.jar")
+        it.file.toString().contains("todo-service-schema-${version}.pom")
+    }
+}

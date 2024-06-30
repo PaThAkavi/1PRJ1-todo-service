@@ -1,0 +1,105 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'jacoco'
+//    id 'org.sonarqube' version '4.0.0.2929'
+//    id 'org.openapi.generator' version '6.2.1'
+    id 'org.springframework.boot' version '3.3.1' apply false
+    id 'io.spring.dependency-management' version '1.1.4' apply false
+}
+
+repositories {
+    mavenCentral()
+}
+
+description = 'Toto Service Parent'
+group = project_group
+if(version == "unspecified") {
+    version = project_version
+}
+
+allprojects {
+    apply plugin: "jacoco"
+
+    task deleteFiles(type: Delete) {
+        delete 'out'
+    }
+
+    clean.finalizedBy(deleteFiles)
+}
+
+subprojects {
+    apply from: "$rootDir/gradle/dependencies.gradle"
+    apply from: "$rootDir/gradle/repositories.gradle"
+    repositories gradle.repositories
+
+    group = project_group
+    if(version == "unspecified") {
+        version = project_version
+    }
+    apply plugin: "java"
+    apply plugin: "io.spring.dependency-management"
+
+    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_17
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    if(project.name != "todo-service-web") {
+        archivesBaseName = "${it.name}"
+        dependencyManagement {
+            imports {
+                mavenBom(SpringBootPlugin.BOM_COORDINATES)
+            }
+        }
+        dependencies {
+            implementation libraries.spring_fw
+            implementation libraries.spring_boot_web
+            implementation libraries.jakarta_inject
+            implementation libraries.commonslang3
+            compileOnly(libraries.openapi) {
+                exclude group: "com.github.jknack"
+                exclude module: "rhino"
+                exclude module: "joda-time"
+                exclude module: "snakeyaml"
+                exclude group: "org.yaml"
+            }
+            testImplementation libraries.junit_api
+            testImplementation libraries.junit_engine
+            testImplementation libraries.junit_platform
+            testImplementation libraries.junit_vintage
+        }
+    }
+
+    if(project.name != "todo-service-api" && project.name != "todo-service-schema" && project.name != "todo-service-web") {
+        dependencies {
+//            compileOnly libraries.lombok
+//            annotationProcessor libraries.lombok
+//
+//            testCompileOnly libraries.lombok
+//            testAnnotationProcessor libraries.lombok
+
+//            testImplementation libraries.spring_boot_test
+//            implementation 'co.elastic.apm:apm-agent-attach:1.48.0'
+        }
+
+        test {
+            useJUnitPlatform()
+        }
+
+        jacocoTestReport {
+            reports {
+                xml.required.set(true)
+                csv.required.set(true)
+                html.required.set(true)
+            }
+        }
+        test.doLast jacocoTestReport.&generate
+    }
+
+}

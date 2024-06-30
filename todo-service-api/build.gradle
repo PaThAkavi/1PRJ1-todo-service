@@ -1,0 +1,55 @@
+import customtasks.InterpretYamlsTask
+
+apply plugin: "maven-publish"
+description = "Todo Service API"
+
+dependencies {
+//    implementation libraries.jackson
+//    testImplementation libraries.spring_boot_test
+}
+
+//tasks.register("generateProjectModels", InterpretYamlsTask)
+
+//compileJava.dependsOn generateProjectModels
+
+sourceSets {
+    main {
+        java {
+            srcDir "build/generated-src/main/java"
+        }
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
+
+publishing {
+    publications {
+        mavenJarApi(MavenPublication) {
+            from components.java
+            pom {
+                name = "todo-service-api"
+                description = "Todo Service - API"
+            }
+        }
+    }
+}
+
+pluginManager.withPlugin("com.jfrog.artifactory") {
+    artifactoryPublish {
+        skip = true
+        publications("mavenJarApi")
+    }
+}
+
+configurations.archives.with {
+    println " >>>>>> Configuration : Skipping Archives for conditional Subprojects ::: " + project.name + " Version : " + version
+    artifacts.remove artifacts.find {
+        println " >>>>>> Configuration : Archive Name ::: " + it.file.toString()
+        it.file.toString().contains("todo-service-api${version}.jar")
+        it.file.toString().contains("todo-service-api-${version}.pom")
+    }
+}
+

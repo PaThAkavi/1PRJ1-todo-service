@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/buildSrc" name="buildSrc">
+                <projects>
+                  <project path="$PROJECT_DIR$/buildSrc" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/todo-service-api" />
+            <option value="$PROJECT_DIR$/todo-service-app" />
+            <option value="$PROJECT_DIR$/todo-service-flow" />
+            <option value="$PROJECT_DIR$/todo-service-model" />
+            <option value="$PROJECT_DIR$/todo-service-persistence" />
+            <option value="$PROJECT_DIR$/todo-service-rest" />
+            <option value="$PROJECT_DIR$/todo-service-schema" />
+            <option value="$PROJECT_DIR$/todo-service-web" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

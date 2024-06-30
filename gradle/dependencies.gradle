@@ -1,0 +1,38 @@
+ext {
+    versions = declareVersions()
+    libraries = declareLibraries()
+}
+
+private static Map<Object, Object> declareVersions() {
+    def versions = [:]
+    versions.spring_boot = "3.3.1"
+    versions.spring_fw = "6.1.5"
+    versions.lombok = "1.18.32"
+    versions.commonslang3 = "3.14.0"
+    versions.jakarta_inject = "2.0.1"
+    versions.openapi = "7.5.0"
+    versions.junitJupiter = "5.10.2"
+    versions.junitPlatform = "1.10.2"
+    versions.lombok = "1.18.32"
+    versions
+}
+
+private static Map<Object, Object> declareLibraries() {
+    def versions = declareVersions()
+    def libraries = [:]
+    libraries.spring_boot_web = "org.springframework.boot:spring-boot-starter-web:$versions.spring_boot"
+    libraries.spring_fw = [
+            "org.springframework:spring-core:$versions.spring_fw"
+    ]
+    libraries.spring_boot_test = "org.springframework.boot:spring-boot-starter-test:$versions.spring_boot"
+    libraries.lombok = "org.projectlombok:lombok:$versions.lombok"
+    libraries.commonslang3 = "org.apache.commons:commons-lang3:$versions.commonslang3"
+    libraries.jakarta_inject = "jakarta.inject:jakarta.inject-api:$versions.jakarta_inject"
+    libraries.openapi = "org.openapitools:openapi-generator:$versions.openapi"
+    libraries.junit_api = "org.junit.jupiter:junit-jupiter-api:$versions.junitJupiter"
+    libraries.junit_engine = "org.junit.jupiter:junit-jupiter-engine:$versions.junitJupiter"
+    libraries.junit_vintage = "org.junit.vintage:junit-vintage-engine:$versions.junitJupiter"
+    libraries.junit_platform = "org.junit.platform:junit-platform-launcher:$versions.junitPlatform"
+    libraries.lombok = "org.projectlombok:lombok:$versions.lombok"
+    libraries
+}

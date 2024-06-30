@@ -1,0 +1,52 @@
+description = "Tod Service Rest"
+
+apply plugin: "maven-publish"
+
+dependencies {
+    implementation project(":todo-service-api")
+    implementation project(":todo-service-model")
+    implementation project(":todo-service-persistence")
+    implementation project(":todo-service-flow")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
+
+publishing {
+    publications {
+        mavenJarFlow(MavenPublication) {
+            from components.java
+            pom {
+                name = "todo-service-rest"
+                description = "Todo Service - Rest"
+            }
+        }
+    }
+}
+
+pluginManager.withPlugin("com.jfrog.artifactory") {
+    artifactoryPublish {
+        skip = true
+        publications("mavenJarRest")
+    }
+}
+
+configurations.archives.with {
+    println " >>>>>> Configuration : Skipping Archives for conditional Subprojects ::: " + project.name + " Version : " + version
+    artifacts.remove artifacts.find {
+        println " >>>>>> Configuration : Archive Name ::: " + it.file.toString()
+        it.file.toString().contains("todo-service-rest-${version}.jar")
+        it.file.toString().contains("todo-service-rest-${version}.pom")
+    }
+}

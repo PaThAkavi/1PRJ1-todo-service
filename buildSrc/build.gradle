@@ -1,0 +1,10 @@
+apply from: "$rootDir/../gradle/repositories.gradle"
+apply from: "$rootDir/../gradle/dependencies.gradle"
+
+repositories gradle.repositories
+
+description = "Todo Service Build Source"
+
+dependencies {
+    implementation libraries.jakarta_inject
+}

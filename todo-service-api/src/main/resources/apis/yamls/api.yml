@@ -1,0 +1,48 @@
+swagger: "2.0"
+info:
+  version: V1
+  title: 1PRJ1-todo-service
+basePath: /api
+schemas:
+- "https"
+
+paths:
+  /getConnectionStatus/V1:
+    post:
+      summary: "Health Check Connection Status"
+      description: "Returns a boolean indication the connection was accepted."
+      operationId: "getConnectionStatus/V1"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "#parameters/TD-senderMessageId"
+        - $ref: "#parameters/TD-creationTimeStamp"
+        - $ref: "#parameters/TD-senderApplicationId"
+          in: body
+          description: "getConnectionStatus"
+          required: true
+          schema:
+            $ref: "#definitions/GetConnectionStatusRequest"
+      responses:
+        200:
+          description: Success response
+          headers:
+            TD-senderMessageId:
+              type: string
+              minLength: 36
+              maxLength: 36
+              description: The senderMessageId is implemented as an industry standard Universally unique Identifier (UUID).
+              pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}
+            TD-creationTimeStamp:
+              type: string
+              format: date-time
+              description: The creationTimeStamp is the date and time that a message instance was created.
+            TD-senderApplicationId:
+              type: string
+              minLength: 2
+              maxLength: 5
+              description: The application that created the specific request message, response message or event instance.
+          schema:
+            $ref: "#/definitions/GetConnectionStatusResponse"

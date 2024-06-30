@@ -1,0 +1,3 @@
+//@SpringBootApplication
+public class FlowTestApplication {
+}

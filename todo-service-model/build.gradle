@@ -1,0 +1,52 @@
+buildscript {
+    repositories gradle.repositories
+    dependencies {
+        classpath group: "cz.habarta.typescript-generator", name: "typescript-generator-gradle-plugin", version: "2.33.956"
+    }
+}
+
+description = "Todo Service Model"
+
+apply plugin: "maven-publish"
+apply plugin: "cz.habarta.typescript-generator"
+
+dependencies {
+    implementation project(":todo-service-api")
+}
+
+generateTypeScript {
+    jsonLibrary = "jackson2"
+    classPatterns = [
+            "com.projects.todo.model.base.*",
+            "com.projects.todo.model.api.*"
+    ]
+    outputFileType = "implementationFile"
+    outputFile = "../todo-service-web/src/models/TodoServiceModel.ts"
+    outputKind = "module"
+    excludeClasses = [
+            "java.io.Serializable"
+    ]
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
+
+publishing {
+    publications {
+        mavenJarFlow(MavenPublication) {
+            from components.java
+            pom {
+                name = "todo-service-model"
+                description = "Todo Service - Model"
+            }
+        }
+    }
+}
+
+pluginManager.withPlugin("com.jfrog.artifactory") {
+    artifactoryPublish {
+        publications("mavenJarModel")
+    }
+}

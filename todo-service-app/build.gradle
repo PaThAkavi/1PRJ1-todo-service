@@ -1,0 +1,61 @@
+apply plugin: "org.springframework.boot"
+apply plugin: "war"
+apply plugin: "maven-publish"
+
+description = "Todo Service App - War"
+
+bootRun {
+    if(!System.properties["spring.profiles.active"]) {
+        jvmArgs = ["-Dspring.profiles.active=local"]
+    }
+}
+
+tasks.register('copyWebApp', Copy) {
+    dependsOn ":todo-service-web:buildReactApp"
+    from "$rootDir/todo-service-web/dist"
+    into "$rootDir/todo-service/build/resources/main/static/."
+}
+
+resolveMainClassName.dependsOn(copyWebApp)
+compileTestJava.dependsOn(copyWebApp)
+
+bootWar {
+    dependsOn(copyWebApp)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveClassifier
+    enabled(true)
+}
+
+war {
+    enabled(true)
+}
+
+publishing {
+    publications {
+        springBootWar(MavenPublication) {
+            artifact bootWar
+        }
+    }
+}
+
+pluginManager.withPlugin("com.jfrog.artifactory") {
+    artifactoryPublish {
+        publications("springBootWar")
+    }
+}
+
+dependencies {
+    implementation project(":todo-service-api")
+    implementation project(":todo-service-model")
+    implementation project(":todo-service-persistence")
+    implementation project(":todo-service-schema")
+    implementation project(":todo-service-flow")
+    implementation project(":todo-service-rest")
+    implementation project(":todo-service-web")
+    implementation libraries.spring_boot_web
+    implementation libraries.spring_fw
+}
+
+configurations {
+    implementation.exclude(group: 'org.openapitools')
+}

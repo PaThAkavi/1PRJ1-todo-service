@@ -1,0 +1,21 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+pluginManagement {
+    apply from: "$rootDir/gradle/repositories.gradle"
+    repositories gradle.repositories
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+}
+
+rootProject.name = 'toto-service-parent'
+
+include 'todo-service-app'
+include "todo-service-web"
+include 'todo-service-flow'
+include 'todo-service-schema'
+include 'todo-service-persistence'
+include 'todo-service-rest'
+include 'todo-service-model'
+include 'todo-service-api'

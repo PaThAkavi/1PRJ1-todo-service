@@ -1,0 +1,62 @@
+openapi: "3.0.1"
+info:
+  title: 1PRJ1-todo-service
+  version: V1
+servers:
+- url: /api
+paths:
+  /getConnectionStatus/V1:
+    post:
+      description: Returns a boolean indication the connection was accepted.
+      operationId: : getConnectionStatus/V1
+        parameters:
+        - description: The senderMessageId is implemented as an industry standard Universally unique Identifier (UUID).
+          in: header
+          name: TD-senderMessageId
+          required: true
+          schema:
+            maxLength: 36
+            minLength: 36
+            type: string
+        - description: The creationTimeStamp is the date and time that a message instance was created.
+          in: header
+          name: TD-creationTimeStamp
+          required: true
+          schema:
+            format: fate-time
+            type: string
+        - description: The application that created the specific request message, response message or event instance.
+          in: header
+          name: TD-senderApplicationId
+          required: true
+          schema:
+            maxLength: 5
+            minLength: 2
+            type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetConnectionStatusResponse"
+          description: getConnectionStatus
+          required: true
+        responses:
+          "200":
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/GetConnectionStatusResponse"
+            description: Success Response
+            headers:
+              TD-senderMessageId:
+                description: The senderMessageId is implemented as an industry standard Universally unique Identifier (UUID).
+                schema:
+                  type: string
+                  minLength: 36
+                  maxLength: 36
+                  pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}
+        summary: Health Check Connection Status
+        x-codegen-request-body-name: body
+        x-content-type: application/json
+        x-accepts:
+        - application/json
