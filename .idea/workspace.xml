@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ccd87bd-5984-4f18-909f-fa9e03de1e29" name="Changes" comment="Fix outstanding issues with build">
+    <list default="true" id="2ccd87bd-5984-4f18-909f-fa9e03de1e29" name="Changes" comment="Fix import issues with openapi in buildSrc">
+      <change afterPath="$PROJECT_DIR$/todo-service-web/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buildSrc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/java/customtasks/InterpretYamlsTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/java/customtasks/InterpretYamlsTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="toto-service-parent" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="toto-service-parent" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="toto-service-parent" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -89,7 +99,7 @@
       <command value="gradle buildDependents" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.toto-service [buildDependents]">
+  <component name="RunManager" selected="Gradle.toto-service [build]">
     <configuration name="toto-service [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -210,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719750333756</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fix import issues with openapi in buildSrc">
+      <option name="closed" value="true" />
+      <created>1719750810895</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719750810895</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -231,7 +249,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="inital commit" />
     <MESSAGE value="Fix outstanding issues with build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix outstanding issues with build" />
+    <MESSAGE value="Fix import issues with openapi in buildSrc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix import issues with openapi in buildSrc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

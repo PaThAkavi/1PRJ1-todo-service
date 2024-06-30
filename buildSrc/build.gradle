@@ -8,12 +8,7 @@ description = "Todo Service Build Source"
 dependencies {
     implementation libraries.jakarta_inject
     implementation libraries.commons_io
-    implementation libraries.commonslang3
     compileOnly(libraries.openapi) {
         exclude group: "com.github.jknack"
-        exclude module: "rhino"
-        exclude module: "joda-time"
-        exclude module: "snakeyaml"
-        exclude group: "org.yaml"
     }
 }
