@@ -6,10 +6,6 @@ pipeline {
         gradle "gradle"  // Ensure this matches the name of your Gradle installation in Jenkins
     }
 
-    environment {
-        // Any environment variables you need
-    }
-
     stages {
 
         stage('Install Node Modules') {
