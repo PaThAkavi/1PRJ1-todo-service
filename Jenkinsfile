@@ -11,6 +11,7 @@ pipeline {
     }
 
     stages {
+
         stage('Install Node Modules') {
             steps {
                 dir('todo-service-web') {
@@ -21,6 +22,7 @@ pipeline {
                 }
             }
         }
+
         stage('Build') {
             steps {
                 // Run the Gradle build
@@ -29,15 +31,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: '**/build/libs/*.jar', allowEmptyArchive: true
-            junit 'build/test-results/test/*.xml'
-        }
-        failure {
-            mail to: 'pathakavaneesh@gmail.com',
-                 subject: "Build failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Check the Jenkins console output for details: ${env.BUILD_URL}"
-        }
-    }
 }
