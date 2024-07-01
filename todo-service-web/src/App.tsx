@@ -1,7 +1,12 @@
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 import Test from './Test';
 
-ReactDOM.render(
-  <Test />,
-  document.getElementById('root') as HTMLElement
+const container = document.getElementById('root');
+const root = createRoot(container as HTMLElement);
+
+root.render(
+  <React.StrictMode>
+    <Test />
+  </React.StrictMode>
 );
