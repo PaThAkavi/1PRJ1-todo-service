@@ -6,6 +6,10 @@ pipeline {
         gradle "gradle"  // Ensure this matches the name of your Gradle installation in Jenkins
     }
 
+    environment {
+        PATH = "/opt/homebrew/bin:$PATH"
+    }
+
     stages {
 
         stage('Install Node Modules') {
