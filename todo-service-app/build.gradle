@@ -13,7 +13,11 @@ bootRun {
 tasks.register('copyWebApp', Copy) {
     dependsOn ":todo-service-web:buildReactApp"
     from "$rootDir/todo-service-web/dist"
-    into "$rootDir/todo-service/build/resources/main/static/."
+    into "$rootDir/todo-service-app/build/resources/main/static/."
+}
+
+tasks.named('war') {
+    dependsOn(copyWebApp)
 }
 
 resolveMainClassName.dependsOn(copyWebApp)
