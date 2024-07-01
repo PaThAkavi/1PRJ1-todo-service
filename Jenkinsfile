@@ -6,6 +6,7 @@ pipeline {
         gradle "gradle"  // Ensure this matches the name of your Gradle installation in Jenkins
     }
 
+    // This is to add npm to the jenkins environment path
     environment {
         PATH = "/opt/homebrew/bin:$PATH"
     }
