@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from your version control system
-                git url: 'https://github.com/PaThAkavi/1PRJ1-todo-service/tree/main'
+                git url: 'git@github.com:PaThAkavi/1PRJ1-todo-service.git'
             }
         }
 
