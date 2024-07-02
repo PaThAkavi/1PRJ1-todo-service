@@ -13,7 +13,7 @@ pipeline {
 
     stages {
 
-        stage('Install Node Modules') {
+        stage('Install npm packages') {
             steps {
                 dir('todo-service-web') {
                     script {
