@@ -6,13 +6,14 @@ pipeline {
         gradle "gradle"  // Ensure this matches the name of your Gradle installation in Jenkins
     }
 
+    // This is to add npm to the jenkins environment path
     environment {
         PATH = "/opt/homebrew/bin:$PATH"
     }
 
     stages {
 
-        stage('Install Node Modules') {
+        stage('Install npm packages') {
             steps {
                 dir('todo-service-web') {
                     script {
